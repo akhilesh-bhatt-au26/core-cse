@@ -1,0 +1,198 @@
+Q1-->
+
+
+There are 4 major principles that make an language Object Oriented. These are Encapsulation, Data Abstraction, Polymorphism and Inheritance. These are also called as four pillars of Object Oriented Programming.
+Encapsulation
+Encapsulation is the mechanism of hiding of data implementation by restricting access to public methods. Instance variables are kept private and accessor methods are made public to achieve this.
+For example, we are hiding the name and dob attributes of person class in the below code snippet.
+Encapsulation — private instance variable and public accessor methods.
+public class Employee {
+    private String name;
+    private Date dob;
+    public String getName() {
+        return name;
+    }
+Abstraction--
+
+Abstract means a concept or an Idea which is not associated with any particular instance.
+Using abstract class/Interface we express the intent of the class rather than the actual implementation. In a way,
+one class should not know the inner details of another in order to use it, just knowing the interfaces should be good enough.
+
+Inheritance--
+
+Inheritances expresses “is-a” and/or “has-a” relationship between two objects. Using Inheritance, In derived classes we can reuse the code of existing super classes.
+In Java, concept of “is-a” is based on class inheritance (using extends) or interface implementation (using implements).
+For example, FileInputStream "is-a" InputStream that reads from a file.
+
+Polymorphism--
+
+It means one name many forms. It is further of two types — static and dynamic. Static polymorphism is achieved using method
+overloading and dynamic polymorphism using method overriding. It is closely related to inheritance. We can write a code that works on the superclass,
+and it will work with any subclass type as well.
+
+
+
+Q2-->
+
+
+Sometimes concepts and ideas slowly grow in a programming community, sometimes they seem to appear in a flash.
+For the first several years I wrote JavaScript, I don’t recall ever seeing anything written online about immutable data.
+Since React hit the scene in the last 2 years however, articles mentioning mutable and immutable data seem to have multiplied,
+as have libraries like Immutable.js and alternate front end languages like Elm that allow users to “use immutable data”.
+I’m not going to address those libraries, but thought it would be useful to throw out a quick primer on what immutable data actually is,
+how it differs from mutable data, and why anyone cares.
+A mutable object is an object whose state can be modified after it is created. An immutable object is an object whose state cannot be modified
+after it is created. Examples of native JavaScript values that are immutable are numbers and strings. Examples of native JavaScript values that
+are mutable include objects, arrays, functions, classes, sets, and maps.
+
+
+Q4-->
+
+
+Dijkstra's algorithm, published in 1959, is named after its discoverer Edsger Dijkstra, who was a Dutch computer scientist.
+This algorithm aims to find the shortest-path in a directed or undirected graph with non-negative edge weights.
+
+Before, we look into the details of this algorithm, let’s have a quick overview about the following:
+
+Graph: A graph is a non-linear data structure defined as G=(V,E) where V is a finite set of vertices and E is a finite set of edges,
+such that each edge is a line or arc connecting any two vertices.
+Weighted graph: It is a special type of graph in which every edge is assigned a numerical value, called weight
+Connected graph: A path exists between each pair of vertices in this type of graph
+Spanning tree for a graph G is a subgraph G’ including all the vertices of G connected with minimum number of edges.
+Thus, for a graph G with n vertices, spanning tree G’ will have n vertices and maximum n-1 edges.
+Problem Statement
+Given a weighted graph G, the objective is to find the shortest path from a given source vertex to all other vertices of G.
+The graph has the following characteristics-
+
+Set of vertices V
+Set of weighted edges E such that (q,r) denotes an edge between vertices q and r and cost(q,r) denotes its weight
+Dijkstra's Algorithm:
+This is a single-source shortest path algorithm and aims to find solution to the given problem statement
+This algorithm works for both directed and undirected graphs
+It works only for connected graphs
+The graph should not contain negative edge weights
+The algorithm predominantly follows Greedy approach for finding locally optimal solution. But, it also uses Dynamic Programming approach for
+building globally optimal solution, since the previous solutions are stored and further added to get final distances from the source vertex.
+
+
+
+Q5-->
+
+
+DFS--
+
+
+The strategy used by DFS is to go deeper in the graph whenever possible. It explores all the edges of a most recently discovered vertex
+u to the deepest possible point one at a time. After exploring all the edges of u, it backtracks to the vertex from which it arrived at u marking u as a visited vertex.
+This search is naturally recursive in nature, therefore, it makes use of the stack data structure (Last In First Out). The explicit usage of stack can be avoided by using
+a recursive implementation, in which case the system stack is utilised.
+The DFS traversal of a graph forms a tree, such a tree is called the DFS tree and it has many applications.
+
+
+
+
+Complexity--
+
+The time complexity of DFS is O(V + E) where V is the number of vertices and E is the number of edges. This is because the algorithm explores each vertex and edge exactly once.
+The space complexity of DFS is O(V). This is because in the worst case, the stack will be filled with all the vertices in the graph (Example: if the graph is a linear chain).
+
+Applications--
+
+Topological Sorting
+Topological Sorting is a linear ordering of veritces in a Directed Acyclic Graphs (DAGs), in this ordering, for every directed edge u to v, vertex u appears before vertex v.
+A single DFS routine is sufficient for performing a topological sort.
+
+Strongly Connected Components (SCC)--
+
+SCCs of a directed graph G are subgraphs in which every vertex is reachable from every other vertex in the subgraph. One of the algorithms for finding SCCs is the Kosaraju's
+algorithm or Tarjan's algorithm, which is based on two DFS routines (One forward and one backward).
+
+Articulation points and Bridges--
+
+Articulation points or Cut-vertices are those vertices of a graph whose removal disconnects the graph. Similarly, bridges are edges of a
+graph whose removal disconnects the graph. Both of them can be identified using the configuration of the DFS tree.
+
+
+BFS--
+
+The strategy used by BFS is to explore the graph level by level starting from a distinguished source node. Each level consists of a set of nodes which are
+equidistant from the source node. From a level L, all the unvisited nodes which are direct neighbours of the nodes in L are considered to be the next level, that is L+1.
+This startegy explores the nodes based on their proximity to the source node, making it ideal for finding the shortest path from a source node to every other node in the graph.
+To maintain the node's in level order, BFS uses queue datastructure (First In First Out).
+Like DFS, BFS traversal ordering also results in a tree which is wide and short.
+
+
+
+Complexity--
+
+The time complexity of DFS is O(V + E) where V is the number of vertices and E is the number of edges.
+This is because in the worst case, the algorithm explores each vertex and edge exactly once.
+The space complexity of DFS is O(V) in the worst case. (Example: Star graph)
+
+Applications--
+
+Shortest path--
+
+As mentioned previously, shortest path between any two nodes in an undirected graph can be found using BFS, assuming each edge is of equal length.
+
+Bipartite checking--
+
+A Bipartite graph is one whose vertex set V can be separated into two sets V1 and V2, such that every vertex belongs to exactly one of them and the
+end vertices of every edge u, v belong to different sets. BFS can be used to find whether a graph is bipartite or not. This is done by checking if it's possible
+to color the graph using exactly two colors.
+
+Garbage collection--
+
+Garbage collection is a form of automatic memory management where unused memory is reclaimed by clearing them. Cheney's algorithm using BFS to accomplish this.
+
+
+
+Q6-->
+
+
+Disk scheduling is done by operating systems to schedule I/O requests arriving for the disk. Disk scheduling is also known as I/O scheduling.
+
+Disk scheduling is important because:
+
+Multiple I/O requests may arrive by different processes and only one I/O request can be served at a time by the disk controller.
+Thus other I/O requests need to wait in the waiting queue and need to be scheduled.
+Two or more request may be far from each other so can result in greater disk arm movement.
+Hard drives are one of the slowest parts of the computer system and thus need to be accessed in an efficient manner.
+There are many Disk Scheduling Algorithms but before discussing them let’s have a quick look at some of the important terms:
+
+Seek Time:Seek time is the time taken to locate the disk arm to a specified track where the data is to be read or write. So the disk scheduling algorithm that
+gives minimum average seek time is better.
+Rotational Latency: Rotational Latency is the time taken by the desired sector of disk to rotate into a position so that it can access the read/write heads.
+So the disk scheduling algorithm that gives minimum rotational latency is better.
+Transfer Time: Transfer time is the time to transfer the data. It depends on the rotating speed of the disk and number of bytes to be transferred.
+
+Disk scheduling is done by operating systems to schedule I/O requests arriving for the disk. Disk scheduling is also known as I/O scheduling.
+
+Disk scheduling is important because:
+
+Multiple I/O requests may arrive by different processes and only one I/O request can be served at a time by the disk controller.
+Thus other I/O requests need to wait in the waiting queue and need to be scheduled.
+Two or more request may be far from each other so can result in greater disk arm movement.
+Hard drives are one of the slowest parts of the computer system and thus need to be accessed in an efficient manner.
+There are many Disk Scheduling Algorithms but before discussing them let’s have a quick look at some of the important terms:
+
+Seek Time:Seek time is the time taken to locate the disk arm to a specified track where the data is to be read or write. So the disk scheduling algorithm that
+gives minimum average seek time is better.
+Rotational Latency: Rotational Latency is the time taken by the desired sector of disk to rotate into a position so that it can access the read/write heads.
+So the disk scheduling algorithm that gives minimum rotational latency is better.
+Transfer Time: Transfer time is the time to transfer the data. It depends on the rotating speed of the disk and number of bytes to be transferred.
+Disk Response Time: Response Time is the average of time spent by a request waiting to perform its I/O operation. Average Response time is the response time of the all requests.
+Variance Response Time is measure of how individual request are serviced with respect to average response time. So the disk scheduling algorithm that gives minimum variance response
+time is better.
+Disk Scheduling Algorithms
+
+FCFS: FCFS is the simplest of all the Disk Scheduling Algorithms. In FCFS, the requests are addressed in the order they arrive in the disk queue.
+
+SSTF: In SSTF (Shortest Seek Time First), requests having shortest seek time are executed first. So, the seek time of every request is calculated in advance
+in the queue and then they are scheduled according to their calculated seek time. As a result, the request near the disk arm will get executed first.
+SSTF is certainly an improvement over FCFS as it decreases the average response time and increases the throughput of system.
+
+SCAN: In SCAN algorithm the disk arm moves into a particular direction and services the requests coming in its path and after reaching the end of disk,
+it reverses its direction and again services the request arriving in its path. So, this algorithm works as an elevator and hence also known as elevator algorithm.
+As a result, the requests at the midrange are serviced more and those arriving behind the disk arm will have to wait.
+
